@@ -21,7 +21,7 @@ jobs:
         run: |
           cd ef-p6-dw
           npm install
-          npm run build --prod
+          npm run build
 
       - name: Deploy to Server
         uses: appleboy/scp-action@master
