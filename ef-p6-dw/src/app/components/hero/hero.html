@@ -1,0 +1,49 @@
+<div class="relative w-full h-[600px] overflow-hidden bg-gray-900 group">
+  <!-- Images -->
+  @for (img of images; track $index) {
+    <div 
+      class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+      [class.opacity-100]="$index === currentIndex()"
+      [class.opacity-0]="$index !== currentIndex()"
+      [class.z-10]="$index === currentIndex()"
+      [class.z-0]="$index !== currentIndex()">
+      
+      <img [src]="img" alt="Hero collection image" class="w-full h-full object-cover opacity-60 mix-blend-overlay">
+      
+      <!-- Content Overlay -->
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-xl tracking-tight animate-bounce">
+          Colección Exclusiva
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl drop-shadow-md">
+          Descubre la elegancia en cada detalle con nuestras nuevas joyas y ropa de temporada.
+        </p>
+        <a href="#catalogo" class="inline-block bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-8 rounded-full shadow-[0_0_15px_rgba(79,70,229,0.5)] transform transition hover:scale-105 hover:-translate-y-1 duration-300">
+          Comprar Ahora
+        </a>
+      </div>
+    </div>
+  }
+
+  <!-- Controls -->
+  <button (click)="prev()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+  </button>
+  <button (click)="next()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 backdrop-blur-sm text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:scale-110">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+  </button>
+
+  <!-- Indicators -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
+    @for (img of images; track $index) {
+      <button 
+        (click)="setIndex($index)" 
+        class="w-3 h-3 rounded-full transition-all duration-300 shadow-sm"
+        [class.bg-white]="$index === currentIndex()"
+        [class.w-8]="$index === currentIndex()"
+        [class.bg-white/40]="$index !== currentIndex()"
+        [class.hover:bg-white/70]="$index !== currentIndex()">
+      </button>
+    }
+  </div>
+</div>
