@@ -29,6 +29,6 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # Quitamos la ruta larga y copiamos solo el contenido final
           source: "ef-p6-dw/dist/ef-p6-dw/browser/*"
           target: "/var/www/html/"
+          strip_components: 4
