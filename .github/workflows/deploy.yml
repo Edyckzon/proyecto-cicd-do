@@ -29,8 +29,6 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: root
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # Apuntamos a la carpeta donde Angular deja el index.html y los assets
+          # Quitamos la ruta larga y copiamos solo el contenido final
           source: "ef-p6-dw/dist/ef-p6-dw/browser/*"
-          # Quitamos solo 3 niveles para que el contenido de 'browser' caiga directo en 'html'
           target: "/var/www/html/"
-          strip_components: 3
